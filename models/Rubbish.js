@@ -1,6 +1,7 @@
 const { createRecord } = require('../database/create')
 const { getRecordsFromSize } = require('../database/get')
 const { updateRecord } = require('../database/update')
+const { getRubbishCreateData } = require('../utils/getRubbishCreateData')
 
 class Rubbish {
   constructor(location, photoId, userId, currentI, id, caption = '') {
@@ -16,7 +17,7 @@ class Rubbish {
 
   async create() {
     try {
-      await createRecord(this, 'rubbish')
+      await createRecord(getRubbishCreateData(this), 'rubbish')
     } catch (err) {
       throw new Error(err)
     }
