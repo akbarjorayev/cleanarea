@@ -30,11 +30,11 @@ async function rubbishDetector(photoId) {
 
     const { response } = result
 
-    if (!response) return false
+    if (!response) return 'no'
     const answer = response.text().toLowerCase().includes('yes') ? 'yes' : 'no'
     return answer
   } catch (err) {
-    return false
+    return 'no'
   }
 }
 
