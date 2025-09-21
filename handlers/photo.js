@@ -1,6 +1,6 @@
-const { bot } = require('../bot')
 const Rubbish = require('../models/Rubbish')
 const { rubbishDetector } = require('../ai/rubbishDetector')
+const { sendPendingMessage } = require('../utils/pendingMessage')
 const {
   setRubbishDataPhotoId,
   getRubbishData,
@@ -9,12 +9,14 @@ const {
 
 async function setRubbishPhotoId(msg) {
   const chatId = msg.chat.id
+  const pending = await sendPendingMessage(chatId)
 
   const thereIsRubbish = await rubbishDetector(
     msg.photo[msg.photo.length - 1].file_id
   )
+
   if (thereIsRubbish === 'no') {
-    bot.sendMessage(chatId, 'Your photo does not contain rubbish.')
+    await pending.edit('❌ Your photo does not contain rubbish.')
     return
   }
 
@@ -25,9 +27,9 @@ async function setRubbishPhotoId(msg) {
 
   try {
     await rubbish.create()
-    bot.sendMessage(chatId, '✅ Rubbish report created successfully!')
+    await pending.edit('✅ Rubbish report created successfully!')
   } catch (err) {
-    bot.sendMessage(chatId, '❌ Failed to create rubbish report.')
+    await pending.edit('❌ Failed to create rubbish report.')
   }
 }
 
