@@ -16,7 +16,7 @@ async function listCommand(msg) {
     caption: getListCallbackCaption(data),
     parse_mode: 'Markdown',
     reply_markup: {
-      inline_keyboard: getPrevNextButtons(rubbish.currentI, totalSize),
+      inline_keyboard: getPrevNextButtons(rubbish.currentI, totalSize, data.id),
     },
   })
 }
