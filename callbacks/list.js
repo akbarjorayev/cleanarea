@@ -24,7 +24,7 @@ async function getListCallback(query) {
       chat_id: chatId,
       message_id: messageId,
       reply_markup: {
-        inline_keyboard: getPrevNextButtons(rubbish.currentI, totalSize),
+        inline_keyboard: getPrevNextButtons(rubbish.currentI, totalSize, data.id),
       },
     }
   )

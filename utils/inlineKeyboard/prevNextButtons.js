@@ -1,4 +1,4 @@
-function getPrevNextButtons(currentI, total) {
+function getPrevNextButtons(currentI, total, currentId) {
   const buttons = []
 
   if (currentI > 0)
@@ -6,6 +6,11 @@ function getPrevNextButtons(currentI, total) {
       text: '⬅️ Prev',
       callback_data: `prev_page/${currentI - 1}`,
     })
+
+  buttons.push({
+    text: '✅ Done',
+    callback_data: `done/${currentId}`,
+  })
 
   if (currentI < total - 1) {
     buttons.push({
