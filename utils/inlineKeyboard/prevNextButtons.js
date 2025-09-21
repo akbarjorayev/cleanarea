@@ -9,7 +9,7 @@ function getPrevNextButtons(currentI, total, currentId) {
 
   buttons.push({
     text: '✅ Done',
-    callback_data: `done/${currentId}`,
+    callback_data: `done/${currentId}/${currentI}`,
   })
 
   if (currentI < total - 1) {
