@@ -29,7 +29,9 @@ async function setRubbishPhotoId(msg) {
     await rubbish.create()
     await pending.edit('✅ Rubbish report created successfully!')
   } catch (err) {
-    await pending.edit('❌ Failed to create rubbish report.')
+    await pending.edit(
+      '❌ Failed to create rubbish report. Please try again /new'
+    )
   }
 }
 
