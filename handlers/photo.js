@@ -10,8 +10,8 @@ async function setRubbishPhotoId(msg) {
   const chatId = msg.chat.id
 
   setRubbishDataPhotoId(msg)
-  const { location, photoId, caption } = getRubbishData(msg) || {}
-  const rubbish = new Rubbish(location, photoId, caption)
+  const { location, photoId, userId, caption } = getRubbishData(msg) || {}
+  const rubbish = new Rubbish(location, photoId, userId, caption)
   deleteRubbishData(msg)
 
   try {

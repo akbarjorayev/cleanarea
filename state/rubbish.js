@@ -2,7 +2,9 @@ const rubbishData = new Map()
 
 function initRubbishData(msg) {
   const chatId = msg.chat.id
-  rubbishData.set(chatId, {})
+  const userId = msg.from.id
+  
+  rubbishData.set(chatId, { userId })
 }
 
 function setRubbishDataLocation(msg) {
